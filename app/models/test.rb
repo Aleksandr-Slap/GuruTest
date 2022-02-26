@@ -1,5 +1,6 @@
 class Test < ApplicationRecord
-  def self.category(name_category)
-    self.joins('JOIN categories ON categories.id = tests.category_id').where(categories: {title: name_category}).order('tests.title DESC').pluck('tests.title')
-  end  
+  has_many :questions, dependent: :destroy 
+  has_and_belongs_to_many :users
+  belongs_to :user 
+  belongs_to :category
 end
