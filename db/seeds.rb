@@ -2,8 +2,16 @@
 
 Answer.destroy_all
 Question.destroy_all
+User.destroy_all
 Test.destroy_all
 Category.destroy_all  
+
+users = User.create([
+                    {email: "sasha@mail.ru"},
+                    {email: "lybasic@mail.ru"}
+                    ])
+
+p "Created #{User.count} users"
 
 categories = Category.create([
                               {title: "Backend"},
@@ -15,11 +23,11 @@ p "Created #{Category.count} categories"
 
 
 tests = Test.create([
-                     {title: "Ruby", category_id: categories[0].id},
-                     {title: "Python", category_id: categories[0].id},
-                     {title: "HTML", category_id: categories[1].id},
-                     {title: "C++", category_id: categories[0].id},
-                     {title: "CSS", category_id: categories[1].id}
+                     {title: "Ruby", category_id: categories[0].id, user_id: users[0]},
+                     {title: "Python", category_id: categories[0].id, user_id: users[0]},
+                     {title: "HTML", category_id: categories[1].id, user_id: users[0]},
+                     {title: "C++", category_id: categories[0].id, user_id: users[1]},
+                     {title: "CSS", category_id: categories[1].id, user_id: users[1]}
                      ])
 
 p "Created #{Test.count} tests"
@@ -75,14 +83,6 @@ Answer.create([
 p "Created #{Answer.count} answers"
 
 
-User.destroy_all
-
-User.create([
-             {email: "sasha@mail.ru"},
-             {email: "pavel@mail.ru"}
-             ])
-
-p "Created #{User.count} users"
 
 
 
