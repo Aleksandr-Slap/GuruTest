@@ -24,6 +24,8 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'rails-i18n'
 
+gem 'byebug'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
