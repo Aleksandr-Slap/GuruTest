@@ -3,13 +3,14 @@ class Answer < ApplicationRecord
 
   validates :body, presence: true,
                    length: { maximum: 50 }
-  validate :limit_answers, on: :create                 
+
+  validate :limit_answers               
 
   scope :correct, ->{where(correct: true) }
 
   private
 
   def limit_answers
-    errors.add(:max_answers, 'cannot have more than 4 answers') if question.answers.size > 4
+    errors.add(:max_answers, "cannot have more than 4 answers") if question.answers.size > 4
   end  
 end

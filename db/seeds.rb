@@ -1,15 +1,13 @@
-
-
-Answer.destroy_all
+  Answer.destroy_all
 Question.destroy_all
-User.destroy_all
 Test.destroy_all
+User.destroy_all
 Category.destroy_all  
 
-users = User.create([
-                    {email: "sasha@mail.ru"},
-                    {email: "lybasic@mail.ru"}
-                    ])
+User.create([
+             {email: "sasha@mail.ru"},
+             {email: "lybasic@mail.ru"}
+             ])
 
 p "Created #{User.count} users"
 
@@ -20,21 +18,22 @@ categories = Category.create([
 
 p "Created #{Category.count} categories"
 
+ 
+# Для примера создал тесты через ассоциацию
 
-
-tests = Test.create([
-                     {title: "Ruby", category_id: categories[0].id, user_id: users[0]},
-                     {title: "Python", category_id: categories[0].id, user_id: users[0]},
-                     {title: "HTML", category_id: categories[1].id, user_id: users[0]},
-                     {title: "C++", category_id: categories[0].id, user_id: users[1]},
-                     {title: "CSS", category_id: categories[1].id, user_id: users[1]}
-                     ])
+tests = User.first.my_tests.create([
+                                   {title: "Ruby", category_id: categories[0].id},
+                                   {title: "Python", category_id: categories[0].id},
+                                   {title: "HTML", category_id: categories[1].id},
+                                   {title: "C++", category_id: categories[0].id},
+                                   {title: "CSS", category_id: categories[1].id}
+                                   ])
 
 p "Created #{Test.count} tests"
 
 
 
-questions = Question.create([
+questions = Question.create!([
                              {body: "Кто создал Ruby?", test_id: tests[0].id},
                              {body: "Значение переменной Ruby по умолчанию", test_id: tests[0].id},
                              {body: "Что вернёт метод .upcase", test_id: tests[0].id},
@@ -81,39 +80,6 @@ Answer.create([
 
 
 p "Created #{Answer.count} answers"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
