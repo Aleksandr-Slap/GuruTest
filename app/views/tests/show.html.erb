@@ -1,10 +1,14 @@
 <h1>Тест по <%= @test.title %></h1>
 
-<ul>
-   <li>Уровень теста:<%= @test.level %></li>
-   <li>Вопросов:<%= @test.questions.count %> </li>
-</ul>   
+<h2>
+  <p>
+    Уровень теста:<%= @test.level %><br>
+    Количество вопросов:<%= @test.questions.count %> 
+  <p>
+</h2>   
+
+<%= render @test.questions %>  
+
 
 <%= link_to "Back", tests_path %> | 
-<%= link_to "Delete test", test_path(@test), method: :delete, data: {confirm: "Точно xочешь удалить?"} %> | 
 <%=link_to "Create question", new_test_question_path(@test) %>
