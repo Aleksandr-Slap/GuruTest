@@ -1,11 +1,11 @@
 <ul>  
   <li>
-    <%= @question.body %><br>
-    <%= link_to "Show", question_path(@question) %> |
-    <%= link_to "Edit", edit_question_path(@question) %> |
+    <%= question.body %><br>
+    <%= link_to "Show", question_path(question) %> |
+    <%= link_to "Edit", edit_question_path(question) %> | 
     <%= link_to 'Delete',
-                question_path(@question),
+                question_path(question),
                 method: :delete,
-                data:   {confirm: 'Are you sure?'} %>
+                data:   {confirm: 'Удалить вопрос?'} %>
   </li> 
 </ul>  

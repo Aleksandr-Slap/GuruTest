@@ -10,13 +10,14 @@ class TestsController < ApplicationController
 
   end
 
-  def edit
-  
-  end
 
   def new
     @test = Test.new
   end 
+  
+  def edit
+  
+  end
 
   def create
     @user = User.first
@@ -27,17 +28,13 @@ class TestsController < ApplicationController
     else
       render :new
     end    
-  end
-
-  def level
-    render plain: "Test category: <%= @test.level %>"
-  end  
+  end 
 
   def update
     if @test.update(test_params)
       redirect_to tests_path
     else
-      render plain: "Ошибка!"
+      render :edit
     end 
   end     
 
@@ -54,6 +51,6 @@ class TestsController < ApplicationController
   end 
 
   def test_params
-    params.require(:test).permit(:title, :level, :category_id, :user_id)
+    params.require(:test).permit(:title, :level, :category_id)
   end
 end
