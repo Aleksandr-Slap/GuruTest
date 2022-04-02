@@ -1,6 +1,6 @@
 class TestsController < ApplicationController
 
-  before_action :set_test, only: %i[show edit update destroy categor]
+  before_action :set_test, only: %i[show edit update destroy start]
 
   def index 
     @tests = Test.all
@@ -42,7 +42,13 @@ class TestsController < ApplicationController
     @test.destroy
 
     redirect_to root_path
-  end  
+  end 
+
+  def start
+    @user = User.first 
+    @user.tests.push(@test)
+    redirect_to @user.test_passage(@test)
+  end 
 
   private
 

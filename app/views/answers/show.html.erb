@@ -1,0 +1,11 @@
+<h1>Ответ на вопрос <%= @answer.question.body %></h1>
+
+<ul>
+  <h2>
+    <li>Ответ: <%= @answer.body %></li>
+    <li>Correct: <%= @answer.correct %></li>
+  </h2>  
+</ul>  
+
+<%= link_to 'Edit', edit_answer_path(@answer) %> |
+<%= link_to 'Back', question_path(@answer.question) %>

@@ -1,0 +1,13 @@
+<div style="text-align: center">
+  <h1>Тест по <%= @test_passage.test.title %> завершён</h1>
+
+  <b>
+    Результат: <% if @test_passage.successfully? %>
+                 <h1 style="color: #008000;">Тест успешно пройден!</h1> 
+               <% else %>
+                 <h1 style="color: #ff0000;">Тест не пройден! </h1>  
+               <% end %>      
+  </b>
+</div>
+
+<%= link_to "Back", root_path %>
