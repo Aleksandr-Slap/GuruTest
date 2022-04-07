@@ -1,5 +1,6 @@
 class TestsController < ApplicationController
 
+  before_action :authenticate_user!
   before_action :set_test, only: %i[show edit update destroy start]
 
   def index 
@@ -24,8 +25,10 @@ class TestsController < ApplicationController
     @test = @user.my_tests.new(test_params)
 
     if @test.save
+      flash[:success] = "Тест успешно создан!"
       redirect_to tests_path
     else
+      flash[:alert] = "Вы допустили ошибку при создании теста"
       render :new
     end    
   end 
@@ -44,10 +47,9 @@ class TestsController < ApplicationController
     redirect_to root_path
   end 
 
-  def start
-    @user = User.first 
-    @user.tests.push(@test)
-    redirect_to @user.test_passage(@test)
+  def start 
+    @current_user.tests.push(@test)
+    redirect_to @current_user.test_passage(@test)
   end 
 
   private

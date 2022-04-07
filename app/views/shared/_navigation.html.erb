@@ -1,5 +1,14 @@
-<b>  
-  <p style="text-align: right; font-family: sans-serif;">
-    <%= link_to "All Tests", root_path %>
-  </p>
-</b>    
+<div style="text-align: right;">  
+  <% if logged_in? %>
+    <p>Welcome,<b><%= current_user.email %>!</b></p>
+    <b>
+      <%= link_to "GuruTest", root_path %>
+      <%= link_to "Logout", logout_path %>
+    </b>
+    <% else %>
+    <b>
+      <%= link_to "Signup", signup_path %>
+      <%= link_to "Login",login_path %>
+    </b>
+  <% end %>
+</div>     
