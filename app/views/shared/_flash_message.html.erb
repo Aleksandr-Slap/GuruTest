@@ -1,0 +1,6 @@
+<% if flash[:alert] %>
+  <%= content_tag :p, flash[:alert], class: 'flash alert success' %>
+<% elsif flash[:success] %>
+  <%= content_tag :p, flash[:success], class: 'flash success' %> 
+<% end %>
+
