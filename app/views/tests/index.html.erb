@@ -1,6 +1,6 @@
 <h1>Tests</h1>
 
-<%= render 'shared/flash_message' %>
+<%= render 'shared/flash_message' %> 
 
 <p>
   <%= link_to "Create new test", new_test_path %>
@@ -8,7 +8,11 @@
 
 <table class="index_table_style">
   <tr>
-    <th>Title</th>
+    <th class="sort-by-title pointer">
+      Title
+      <%= octicon 'arrow-up', class: 'hide' %>
+      <%= octicon 'arrow-down', class: 'hide' %>
+    </th>
     <th>Level</th>
     <th>Questions</th>
     <th colspan="4">Actions</th>
