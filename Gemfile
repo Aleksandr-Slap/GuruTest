@@ -24,7 +24,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'rails-i18n'
 
-gem 'byebug'
+gem 'octicons_helper'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
